@@ -21,6 +21,7 @@
     "hubot-pugme": "*",
     "hubot-rules": "*",
     "hubot-redis-brain": "*",
+    "hubot-shipit": "*",
     "coffee-script": "*"
   },
 
