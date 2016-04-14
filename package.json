@@ -1,0 +1,16 @@
+{
+  "name": "lineBot",
+  "version": "0.0.0",
+  "private": true,
+
+  "author": "daiheidoi <dd11197208+cloud9@gmail.com>",
+
+  "description": "LineBotWithHubot",
+
+  "dependencies": {
+  },
+
+  "engines": {
+    "node": "0.10.x"
+  }
+}
