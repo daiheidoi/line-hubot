@@ -13,7 +13,15 @@
     "hubot-line-trial": "*",
     "hubot-diagnostics": "*",
     "hubot-help": "*",
-    "hubot-heroku-keepalive": "*"
+    "hubot-heroku-keepalive": "*",
+    "hubot-google-images": "*",
+    "hubot-google-translate": "*",
+    "hubot-github": "*",
+    "hubot-google-images": "*",
+    "hubot-help": "*",
+    "hubot-maps": "*",
+    "hubot-pugme": "*",
+    "hubot-rules": "*"
   },
 
   "engines": {
