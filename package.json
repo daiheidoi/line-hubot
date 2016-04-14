@@ -17,11 +17,10 @@
     "hubot-google-images": "*",
     "hubot-google-translate": "*",
     "hubot-github": "*",
-    "hubot-google-images": "*",
-    "hubot-help": "*",
     "hubot-maps": "*",
     "hubot-pugme": "*",
-    "hubot-rules": "*"
+    "hubot-rules": "*",
+    "coffee-script": "*"
   },
 
   "engines": {
