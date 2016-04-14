@@ -8,11 +8,11 @@
   "description": "LineBotWithHubot",
 
   "dependencies": {
-    "hubot": "^2.17.0",
-    "hubot-scripts": "^2.16.2"
+    "hubot": "*",
+    "hubot-scripts": "*"
   },
 
   "engines": {
-    "node": "0.10.x",
+    "node": "0.10.x"
   }
 }
