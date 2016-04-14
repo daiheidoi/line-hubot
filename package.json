@@ -1,6 +1,6 @@
 {
-  "name": "ちんとも",
-  "version": "0.0.0",
+  "name": "tomo",
+  "version": "0.0.1",
   "private": true,
 
   "author": "daiheidoi <dd11197208+cloud9@gmail.com>",
@@ -26,6 +26,6 @@
   },
 
   "engines": {
-    "node": "*"
+    "node": "0.10.x"
   }
 }
