@@ -9,7 +9,8 @@
 
   "dependencies": {
     "hubot": "*",
-    "hubot-scripts": "*"
+    "hubot-scripts": "*",
+    "hubot-line-trial": "*"
   },
 
   "engines": {
