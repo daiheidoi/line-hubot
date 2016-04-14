@@ -11,7 +11,9 @@
     "hubot": "*",
     "hubot-scripts": "*",
     "hubot-line-trial": "*",
-    "hubot-diagnostics": "*"
+    "hubot-diagnostics": "*",
+    "hubot-help": "*",
+    "hubot-heroku-keepalive": "*"
   },
 
   "engines": {
