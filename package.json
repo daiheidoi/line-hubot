@@ -2,7 +2,7 @@
   "name": "tomo",
   "version": "0.0.1",
   "private": true,
-  
+  "main": "src/line.coffee",
   "author": "daiheidoi <dd11197208+cloud9@gmail.com>",
 
   "description": "LineBotWithHubot",
