@@ -2,6 +2,7 @@
   "name": "tomo",
   "version": "0.0.1",
   "private": true,
+  "main": "src/line_extension.coffee",
   "author": "daiheidoi <dd11197208+cloud9@gmail.com>",
   "description": "LineBotWithHubot",
   "dependencies": {
@@ -20,7 +21,7 @@
     "hubot-rules": "*",
     "hubot-scripts": "*",
     "hubot-shipit": "*",
-    "request": "^2.71.0"
+    "request": "*"
   },
   "engines": {
     "node": "0.10.x"
