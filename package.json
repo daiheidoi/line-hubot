@@ -2,7 +2,7 @@
   "name": "tomo",
   "version": "0.0.1",
   "private": true,
-  "main": "line_source/line.coffee",
+
   "author": "daiheidoi <dd11197208+cloud9@gmail.com>",
 
   "description": "LineBotWithHubot",
@@ -10,6 +10,7 @@
   "dependencies": {
     "hubot": "*",
     "hubot-scripts": "*",
+    "hubot-line-trial": "*",
     "hubot-diagnostics": "*",
     "hubot-help": "*",
     "hubot-heroku-keepalive": "*",
