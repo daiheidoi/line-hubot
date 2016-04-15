@@ -2,29 +2,26 @@
   "name": "tomo",
   "version": "0.0.1",
   "private": true,
-
   "author": "daiheidoi <dd11197208+cloud9@gmail.com>",
-
   "description": "LineBotWithHubot",
-
   "dependencies": {
+    "coffee-script": "*",
     "hubot": "*",
-    "hubot-scripts": "*",
-    "hubot-line-trial": "*",
     "hubot-diagnostics": "*",
-    "hubot-help": "*",
-    "hubot-heroku-keepalive": "*",
+    "hubot-github": "*",
     "hubot-google-images": "*",
     "hubot-google-translate": "*",
-    "hubot-github": "*",
+    "hubot-help": "*",
+    "hubot-heroku-keepalive": "*",
+    "hubot-line-trial": "*",
     "hubot-maps": "*",
     "hubot-pugme": "*",
-    "hubot-rules": "*",
     "hubot-redis-brain": "*",
+    "hubot-rules": "*",
+    "hubot-scripts": "*",
     "hubot-shipit": "*",
-    "coffee-script": "*"
+    "request": "^2.71.0"
   },
-
   "engines": {
     "node": "0.10.x"
   }
