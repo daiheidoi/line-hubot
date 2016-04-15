@@ -2,6 +2,8 @@
 request = require 'request'
 lineDefaultEP = 'https://trialbot-api.line.me/v1/events'
 
+require 'hubot-line-trial' 
+
 class LineExtension extends Line
   sendImg: (envelope, strings...) ->
     data = JSON.stringify({
