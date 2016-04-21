@@ -14,6 +14,8 @@
 # Author:
 #   Brandon Satrom
 
+{LineImageAction} = require 'hubot-line'
+
 bingAccountKey = process.env.HUBOT_BING_ACCOUNT_KEY
 unless bingAccountKey
   throw "You must set HUBOT_BING_ACCOUNT_KEY in your environment vairables"
@@ -21,7 +23,7 @@ unless bingAccountKey
 module.exports = (robot) ->
   robot.hear /^bing( image)? (.*)/i, (msg) ->
     imageMe msg, msg.match[2], (url) ->
-      msg.send url
+      msg.send new LineImageAction url, url
 
 imageMe = (msg, query, cb) ->
   msg.http('https://api.datamarket.azure.com/Bing/Search/Image')
