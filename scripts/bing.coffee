@@ -23,7 +23,7 @@ unless bingAccountKey
 module.exports = (robot) ->
   robot.hear /^bing( image)? (.*)/i, (msg) ->
     imageMe msg, msg.match[2], (url) ->
-      msg.send new LineImageAction url, url
+      msg.emote new LineImageAction url, url
 
 imageMe = (msg, query, cb) ->
   msg.http('https://api.datamarket.azure.com/Bing/Search/Image')
