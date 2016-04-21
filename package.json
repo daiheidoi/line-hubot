@@ -20,6 +20,12 @@
     "hubot-rules": "*",
     "hubot-scripts": "*",
     "hubot-shipit": "*",
+    "arrify": "*",
+    "soupselect": "*",
+    "dateformat": "*",
+    "htmlparser": "*",
+    "underscore": "*",
+    "underscore.string": "*",
     "request": "*"
   },
   "engines": {
