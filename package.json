@@ -2,7 +2,6 @@
   "name": "tomo",
   "version": "0.0.1",
   "private": true,
-  "main": "src/line-extension.coffee",
   "author": "daiheidoi <dd11197208+cloud9@gmail.com>",
   "description": "LineBotWithHubot",
   "dependencies": {
@@ -14,7 +13,7 @@
     "hubot-google-translate": "*",
     "hubot-help": "*",
     "hubot-heroku-keepalive": "*",
-    "hubot-line-trial": "*",
+    "hubot-line": "*",
     "hubot-maps": "*",
     "hubot-pugme": "*",
     "hubot-redis-brain": "*",
