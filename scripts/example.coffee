@@ -12,8 +12,8 @@
 
 module.exports = (robot) ->
   robot.hear /おめでとう/i, (msg) ->
-    originalContentUrl = "https://github.com/daiheidoi/line-hubot/res/test2.jpg"
-    previewImageUrl = "https://github.com/daiheidoi/line-hubot/res/test2.jpg"
+    originalContentUrl = "https://github.com/daiheidoi/line-hubot/res/test_original.jpg"
+    previewImageUrl = "https://github.com/daiheidoi/line-hubot/res/test_thumbnail.jpg"
     msg.emote new LineImageAction originalContentUrl, previewImageUrl
     msg.send '今日はお祝いしてくださり、' + '\n' +
       'ありがとうございます☆' + '\n' +
