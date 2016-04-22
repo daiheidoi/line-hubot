@@ -8,8 +8,18 @@
 #
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
-module.exports = (robot) ->
+{LineImageAction} = require 'hubot-line'
 
+module.exports = (robot) ->
+  robot.hear /おめでとう/i, (msg) ->
+    originalContentUrl = "https://github.com/daiheidoi/line-hubot/res/test.jpg"
+    previewImageUrl = "https://github.com/daiheidoi/line-hubot/res/test.jpg"
+    msg.emote new LineImageAction originalContentUrl, previewImageUrl
+    msg.send '今日はお祝いしてくださり、' + '\n' +
+      'ありがとうございます☆' + '\n' +
+      'これからもXとYを' + '\n' +
+      '温かい目で見守っていてください！'
+      
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   #
