@@ -1,3 +1,18 @@
+# Description:
+#   Today's dinner is thinking recipe using Rakuten API
+#
+# Dependencies:
+#   request
+#   underscore
+#
+# Configuration:
+#   HUBOT_LINE_RAKUTEN_APPLICATION_ID
+#
+# Commands:
+#   /(?:今日は|きょうは|、)?(.+)(?:かな)/
+#
+# Author:
+
 {LineRawMessageListener, LineImageListener, LineVideoListener, LineAudioListener, LineLocationListener,
 LineStickerListener, LineContactListener, LineRawOperationListener, LineFriendListener, LineBlockListener,
 LineTextAction, LineImageAction, LineVideoAction, LineAudioAction, LineLocationAction, LineStickerAction
