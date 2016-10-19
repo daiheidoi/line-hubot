@@ -24,7 +24,10 @@ module.exports = (robot) ->
     imageMe msg, msg.match[2], (url) ->
       msg.reply
         type: "image"
-        content:[original: "#{url}", preview: "#{url}"]
+        content:[
+          original: "#{url}"
+          preview: "#{url}"
+        ]
 
 imageMe = (msg, query, cb) ->
   msg.http('https://api.datamarket.azure.com/Bing/Search/Image')
