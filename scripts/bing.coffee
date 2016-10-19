@@ -25,8 +25,8 @@ module.exports = (robot) ->
       msg.reply
         type: "image"
         content:[
-          original: "#{url}"
-          preview: "#{url}"
+          original: url
+          preview: url
         ]
 
 imageMe = (msg, query, cb) ->
