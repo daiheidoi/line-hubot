@@ -23,6 +23,10 @@ module.exports = (robot) ->
   robot.hear /^bing( image)? (.*)/i, (msg) ->
     imageMe msg, msg.match[2], (url) ->
       msg.reply {
+        type: "text"
+        contents: ["#{msg.match[2]} 検索結果"]
+      },
+      {
         type: "image"
         content:[
           original: url
