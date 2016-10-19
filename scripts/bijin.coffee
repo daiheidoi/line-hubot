@@ -25,7 +25,7 @@ module.exports = (robot) ->
         link = result[0].link
         msg.reply {
           type: "text"
-          contents:  "お名前: #{category}\n" + "link: #{link}\n" + "#{thumb}\n"
+          contents: ["お名前: #{category}\nlink: #{link}\n#{thumb}\n"]
         },
         {
           type: "image"
