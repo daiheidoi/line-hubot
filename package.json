@@ -13,7 +13,7 @@
     "hubot-google-translate": "*",
     "hubot-help": "*",
     "hubot-heroku-keepalive": "*",
-    "hubot-line": "*",
+    "line-message-api": "file:./hubot-line-message-api",
     "hubot-maps": "*",
     "hubot-pugme": "*",
     "hubot-redis-brain": "*",
