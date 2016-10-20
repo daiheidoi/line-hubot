@@ -32,7 +32,9 @@ module.exports = (robot) ->
         strings.push story.titleNoFormatting.replace(/&#39;/g, "'").replace(/`/g, "'").replace(/&quot;/g, "\"")
         strings.push story.unescapedUrl + "\n"
 
-      msg.send strings.join "\n"
+      msg.reply
+        type: "text"
+        contents: strings.join "\n"
 
   query = (msg, cb) ->
     if (msg.match[1] != "")

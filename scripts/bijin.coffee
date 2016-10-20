@@ -23,14 +23,6 @@ module.exports = (robot) ->
         category = result[0].category
         thumb = result[0].thumb
         link = result[0].link
-        msg.reply {
+        msg.reply 
           type: "text"
           contents: ["お名前: #{category}\nlink: #{link}\n#{thumb}\n"]
-        },
-        {
-          type: "image"
-          contents: [
-            original: link
-            preview: link
-          ]
-        }
