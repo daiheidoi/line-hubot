@@ -27,11 +27,8 @@ module.exports = (robot) ->
       if url[0..4] is "https" then httpsUrls = url else httpsUrls = url.replace(/http/, "https")
       console.log "httpsUrls: #{httpsUrls}"
       msg.reply 
-        type: "image"
-        contents: [
-          original: "#{httpsUrls}"
-          preview: "#{httpsUrls}"
-          ]
+        type: "text"
+        contents: ["#{httpsUrls}"]
 
 imageMe = (msg, query, cb) ->
   msg.http('https://api.datamarket.azure.com/Bing/Search/Image')
