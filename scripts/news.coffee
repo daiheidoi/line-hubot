@@ -24,12 +24,12 @@ module.exports = (robot) ->
       # httpだとLINEAPI内で弾かれるため整形 してもダメだった
       msg.reply 
         type: "text"
-        contents: ["#{newses[0].Title}\nlink: #{newses[0].Url}\n\n#{newses[1].Title}\nlink: #{newses[1].Url}\n\n#{newses[2].Title}\nlink: #{newses[2].Url}\n\n#{newses[3].Title}\nlink: #{newses[3].Url}\n\n#{newses[4].Title}\nlink: #{newses[4].Url}\n\n"]
+        contents: ["#{newses[0].Title}\nlink: #{newses[0].Url}\n\n#{newses[1].Title}\nlink: #{newses[1].Url}\n\n#{newses[2].Title}\nlink: #{newses[2].Url}\n\n#{newses[3].Title}\nlink: #{newses[3].Url}\n\n#{newses[4].Title}\nlink: #{newses[4].Url}"]
 
 newsMe = (msg, query, cb) ->
   msg.http('https://api.datamarket.azure.com/Bing/Search/v1/News')
     .header("Authorization", "Basic " + new Buffer("#{bingAccountKey}:#{bingAccountKey}").toString('base64'))
-    .query(Query: "'" + query + "'", NewsSortBy: "Date", $format: "json", $top: 5)
+    .query(Query: "'" + query + "'", $format: "json", $top: 5)
     .get() (err, res, body) ->
       try
         console.log(body)
