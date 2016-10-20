@@ -28,6 +28,8 @@ module.exports = (robot) ->
       else
         strings.push "Here's the latest news headlines:\n"
       
+      console.log response
+      
       for story in response.responseData.results
         strings.push story.titleNoFormatting.replace(/&#39;/g, "'").replace(/`/g, "'").replace(/&quot;/g, "\"")
         strings.push story.unescapedUrl + "\n"
