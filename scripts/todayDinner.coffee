@@ -65,9 +65,5 @@ callRecipeServiceApi = (apiPath, callback) ->
 recommendRecipe = (foodName, phrase, recipe)->
   {
     type: "text"
-    contents: "#{foodName}#{phrase}、#{recipe.recipeTitle} とかはどう？"
-  },
-  {
-    type: "text"
-    contents: "#{recipe.recipeUrl}"
+    contents: "#{foodName}#{phrase}、#{recipe.recipeTitle} とかはどう？\n#{recipe.recipeUrl}"
   }
