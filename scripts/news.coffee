@@ -21,11 +21,12 @@ unless bingAccountKey
 module.exports = (robot) ->
   robot.hear /^news (.*)/i, (msg) ->
     newsMe msg, msg.match[1], (newses) ->
+      messages = ""
       for message in newses
-        console.log message
-        msg.reply 
-          type: "text"
-          contents: ["#{message.Title}\nlink: #{message.Url}\n\n"]
+        messages += "#{message.Title}\nlink: #{message.Url}\n\n"
+      msg.reply 
+        type: "text"
+        contents: ["#{messages}"]
 
 newsMe = (msg, query, cb) ->
   msg.http('https://api.datamarket.azure.com/Bing/Search/v1/News')
