@@ -21,10 +21,11 @@ unless bingAccountKey
 module.exports = (robot) ->
   robot.hear /^news (.*)/i, (msg) ->
     newsMe msg, msg.match[1], (newses) ->
-      # httpだとLINEAPI内で弾かれるため整形 してもダメだった
-      msg.reply 
-        type: "text"
-        contents: ["#{newses[0]["Title"]}\nlink: #{newses[0].Url}\n\n#{newses[1].Title}\nlink: #{newses[1].Url}\n\n#{newses[2].Title}\nlink: #{newses[2].Url}\n\n#{newses[3].Title}\nlink: #{newses[3].Url}\n\n#{newses[4].Title}\nlink: #{newses[4].Url}"]
+      for message in newses
+        console.log message
+        msg.reply 
+          type: "text"
+          contents: ["#{message.Title}\nlink: #{message.Url}\n\n"]
 
 newsMe = (msg, query, cb) ->
   msg.http('https://api.datamarket.azure.com/Bing/Search/v1/News')
