@@ -34,10 +34,7 @@ newsMe = (msg, query, cb) ->
     .query(Query: "'" + query + "'", Market: "'" + "ja-JP" + "'", $format: "json", $top: 5)
     .get() (err, res, body) ->
       try
-        console.log(body)
         newses = JSON.parse(body).d.results
-        console.log(newses)
-        console.log(newses[0])
         cb newses
       catch error
         cb body
