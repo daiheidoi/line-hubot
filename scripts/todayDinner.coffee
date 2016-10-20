@@ -48,7 +48,7 @@ module.exports = (robot) ->
     else
       msg.reply 
         type: "text"
-        contents: "#{foodName}だとわからないからもうちょっと詳しく教えて"
+        contents: ["#{foodName}だとわからないからもうちょっと詳しく教えて"]
 
 createCategoryMap = ->
   callRecipeServiceApi categoryEndpoint, (results) ->

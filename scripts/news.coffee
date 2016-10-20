@@ -34,7 +34,7 @@ module.exports = (robot) ->
 
       msg.reply
         type: "text"
-        contents: strings.join "\n"
+        contents: [strings.join "\n"]
 
   query = (msg, cb) ->
     if (msg.match[1] != "")
