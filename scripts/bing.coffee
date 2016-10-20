@@ -21,8 +21,8 @@ module.exports = (robot) ->
   robot.hear /^bing( image)? (.*)/i, (msg) ->
     imageMe msg, msg.match[2], (url) ->
       # httpだとLINEAPI内で弾かれるため整形 してもダメだった
-      httpsUrls = ""
-      if url[0..4] is "https" then httpsUrls = url else httpsUrls = url.replace(/http/, "https")
+      httpsUrls = url
+      # if url[0..4] is "https" then httpsUrls = url else httpsUrls = url.replace(/http/, "https")
       console.log "httpsUrls: #{httpsUrls}"
       msg.reply 
         type: "text"
