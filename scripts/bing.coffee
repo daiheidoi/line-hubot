@@ -22,17 +22,9 @@ unless bingAccountKey
 module.exports = (robot) ->
   robot.hear /^bing( image)? (.*)/i, (msg) ->
     imageMe msg, msg.match[2], (url) ->
-      msg.reply {
+      msg.reply 
         type: "text"
-        contents: ["#{msg.match[2]} 検索結果"]
-      },
-      {
-        type: "image"
-        content:[
-          original: url
-          preview: url
-        ]
-      }
+        contents: ["#{result}"]
 
 imageMe = (msg, query, cb) ->
   msg.http('https://api.datamarket.azure.com/Bing/Search/Image')
