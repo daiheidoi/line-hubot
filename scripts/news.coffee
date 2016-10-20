@@ -34,6 +34,7 @@ newsMe = (msg, query, cb) ->
       try
         console.log(body)
         newses = JSON.parse(body).d.results
+        console.log(newses)
         cb newses
       catch error
         cb body
