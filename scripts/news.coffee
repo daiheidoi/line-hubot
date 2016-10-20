@@ -14,44 +14,26 @@
 # Author:
 #   Matt McCormick
 
+bingAccountKey = process.env.HUBOT_BING_ACCOUNT_KEY
+unless bingAccountKey
+  throw "You must set HUBOT_BING_ACCOUNT_KEY in your environment vairables"
+
 module.exports = (robot) ->
-  robot.respond /news(?: me| on)?\s?(.*)/, (msg) ->
-    query msg, (response, err) ->
-      return msg.send err if err
-
-      strings = []
-      
-      topic = msg.match[1]
-      
-      if (topic != "")
-        strings.push "Here's the latest news on \"#{topic}\":\n"
-      else
-        strings.push "Here's the latest news headlines:\n"
-      
-      console.log response
-      
-      for story in response.responseData.results
-        strings.push story.titleNoFormatting.replace(/&#39;/g, "'").replace(/`/g, "'").replace(/&quot;/g, "\"")
-        strings.push story.unescapedUrl + "\n"
-
-      msg.reply
+  robot.hear /^news (.*)/i, (msg) ->
+    newsMe msg, msg.match[2], (newses) ->
+      # httpだとLINEAPI内で弾かれるため整形 してもダメだった
+      msg.reply 
         type: "text"
-        contents: [strings.join "\n"]
+        contents: ["#{newses[0].Title}\nlink: #{newses[0].Url}\n\n#{newses[1].Title}\nlink: #{newses[1].Url}\n\n#{newses[2].Title}\nlink: #{newses[2].Url}\n\n#{newses[3].Title}\nlink: #{newses[3].Url}\n\n#{newses[4].Title}\nlink: #{newses[4].Url}\n\n"]
 
-  query = (msg, cb) ->
-    if (msg.match[1] != "")
-      msg.http("https://ajax.googleapis.com/ajax/services/search/news?v=1.0&rsz=5")
-        .query(q: msg.match[1])
-        .get() (err, res, body) ->
-          complete cb, body, err
-    else
-      msg.http("https://ajax.googleapis.com/ajax/services/search/news?v=1.0&rsz=5&topic=h")
-        .get() (err, res, body) ->
-          complete cb, body, err
-
-  complete = (cb, body, err) ->
-    try
-      response = JSON.parse body
-    catch err
-      err = "Sorry, but I could not fetch the latest headlines."
-    cb(response, err)
+newsMe = (msg, query, cb) ->
+  msg.http('https://api.datamarket.azure.com/Bing/Search/v1/News')
+    .header("Authorization", "Basic " + new Buffer("#{bingAccountKey}:#{bingAccountKey}").toString('base64'))
+    .query(Query: "'" + query + "'", NewsSortBy: "Date", $format: "json", $top: 5)
+    .get() (err, res, body) ->
+      try
+        console.log(body)
+        newses = JSON.parse(body).d.results
+        cb newses
+      catch error
+        cb body

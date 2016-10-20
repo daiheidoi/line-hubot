@@ -13,8 +13,6 @@
 # Author:
 #   Brandon Satrom
 
-{LineImageAction} = require 'hubot-line'
-
 bingAccountKey = process.env.HUBOT_BING_ACCOUNT_KEY
 unless bingAccountKey
   throw "You must set HUBOT_BING_ACCOUNT_KEY in your environment vairables"
@@ -31,7 +29,7 @@ module.exports = (robot) ->
         contents: ["#{httpsUrls}"]
 
 imageMe = (msg, query, cb) ->
-  msg.http('https://api.datamarket.azure.com/Bing/Search/Image')
+  msg.http('https://api.datamarket.azure.com/Bing/Search/v1/Image')
     .header("Authorization", "Basic " + new Buffer("#{bingAccountKey}:#{bingAccountKey}").toString('base64'))
     .query(Query: "'" + query + "'", $format: "json", $top: 50)
     .get() (err, res, body) ->
