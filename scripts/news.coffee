@@ -29,7 +29,7 @@ module.exports = (robot) ->
 newsMe = (msg, query, cb) ->
   msg.http('https://api.datamarket.azure.com/Bing/Search/v1/News')
     .header("Authorization", "Basic " + new Buffer("#{bingAccountKey}:#{bingAccountKey}").toString('base64'))
-    .query(Query: "'" + query + "'", $format: "json", $top: 5)
+    .query(Query: "'" + query + "'", Market: "ja-JP", $format: "json", $top: 5)
     .get() (err, res, body) ->
       try
         console.log(body)
