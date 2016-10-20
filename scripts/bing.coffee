@@ -33,6 +33,7 @@ imageMe = (msg, query, cb) ->
     .get() (err, res, body) ->
       try
         images = JSON.parse(body).d.results
+        console.log images
         image = msg.random images
         cb image.MediaUrl
       catch error
