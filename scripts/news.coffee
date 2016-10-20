@@ -20,7 +20,7 @@ unless bingAccountKey
 
 module.exports = (robot) ->
   robot.hear /^news (.*)/i, (msg) ->
-    newsMe msg, msg.match[2], (newses) ->
+    newsMe msg, msg.match[1], (newses) ->
       # httpだとLINEAPI内で弾かれるため整形 してもダメだった
       msg.reply 
         type: "text"
