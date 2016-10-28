@@ -22,12 +22,18 @@ module.exports = (robot) ->
   robot.hear /(忍びねえな|しのびねえな)$/i, (msg) ->
     msg.reply 
       type:'image'# 'video'
-      content:[original: "https://pic.prepics-cdn.com/shinobineena/33833384.jpeg", preview: "https://pic.prepics-cdn.com/shinobineena/33833384.jpeg"]
+      contents: [
+        original: "https://pic.prepics-cdn.com/shinobineena/33833384.jpeg"
+        preview: "https://pic.prepics-cdn.com/shinobineena/33833384.jpeg"
+        ]
 
   robot.hear /(構わんよ|かまわんよ)$/i, (msg) ->
     msg.reply 
       type:'image'# 'video'
-      content:[original: "https://pic.prepics-cdn.com/shinobineena/33833385.jpeg", preview: "https://pic.prepics-cdn.com/shinobineena/33833385.jpeg"]    
+      contents:[
+        original: "https://pic.prepics-cdn.com/shinobineena/33833385.jpeg", 
+        preview: "https://pic.prepics-cdn.com/shinobineena/33833385.jpeg"
+        ]    
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   #
