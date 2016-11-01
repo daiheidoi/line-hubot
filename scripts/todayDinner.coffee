@@ -31,7 +31,7 @@ categoryMap = {}
 module.exports = (robot) ->
   createCategoryMap()
 
-  robot.hear /(?:今日は|きょうは|、)?(.+)(?:かな)/, (msg) ->
+  robot.hear /(今日は|きょうは)?(.+)?(かな)/, (msg) ->
     foodName = msg.match[1]
 
     if foodName?.match(/(何|なん)でもいい/)
