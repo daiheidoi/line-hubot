@@ -1,3 +1,4 @@
+
 # Description:
 #   Queries Bing and returns a random image from the top 50 images found using Bing API
 #
@@ -13,8 +14,6 @@
 # Author:
 #   Brandon Satrom
 
-{LineImageAction} = require 'hubot-line'
-
 bingAccountKey = process.env.HUBOT_BING_ACCOUNT_KEY
 unless bingAccountKey
   throw "You must set HUBOT_BING_ACCOUNT_KEY in your environment vairables"
@@ -22,16 +21,17 @@ unless bingAccountKey
 module.exports = (robot) ->
   robot.hear /^bing( image)? (.*)/i, (msg) ->
     imageMe msg, msg.match[2], (url) ->
-      msg.emote new LineImageAction url, url
+      time = Date.now()
+      msg.send url + "?#{time}"
 
 imageMe = (msg, query, cb) ->
-  msg.http('https://api.datamarket.azure.com/Bing/Search/Image')
-    .header("Authorization", "Basic " + new Buffer("#{bingAccountKey}:#{bingAccountKey}").toString('base64'))
-    .query(Query: "'" + query + "'", $format: "json", $top: 50)
+  msg.http('https://api.cognitive.microsoft.com/bing/v5.0/images/search')
+    .header("Ocp-Apim-Subscription-Key", "#{bingAccountKey}")
+    .query(q: "'" + query + "'", $count: 20)
     .get() (err, res, body) ->
       try
-        images = JSON.parse(body).d.results
+        images = JSON.parse(body).value
         image = msg.random images
-        cb image.MediaUrl
+        cb image.contentUrl
       catch error
         cb body
