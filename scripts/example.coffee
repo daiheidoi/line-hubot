@@ -19,7 +19,21 @@ module.exports = (robot) ->
       'ありがとうございます☆' + '\n' +
       'これからもXとYを' + '\n' +
       '温かい目で見守っていてください！'
-      
+  robot.hear /(忍びねえな|しのびねえな)$/i, (msg) ->
+    msg.reply 
+      type:'image'# 'video'
+      contents: [
+        original: "https://pic.prepics-cdn.com/shinobineena/33833384_200x200.jpeg"
+        preview: "https://pic.prepics-cdn.com/shinobineena/33833384_200x200.jpeg"
+        ]
+
+  robot.hear /(構わんよ|かまわんよ)$/i, (msg) ->
+    msg.reply 
+      type:'image'# 'video'
+      contents:[
+        original: "https://pic.prepics-cdn.com/shinobineena/33833385_200x200.jpeg", 
+        preview: "https://pic.prepics-cdn.com/shinobineena/33833385_200x200.jpeg"
+        ]    
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   #

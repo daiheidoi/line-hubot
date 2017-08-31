@@ -31,22 +31,24 @@ categoryMap = {}
 module.exports = (robot) ->
   createCategoryMap()
 
-  robot.hear /(?:今日は|きょうは|、)?(.+)(?:かな)/, (msg) ->
+  robot.respond /(?:今日は|きょうは|、)?(.+)(?:かな)/, (msg) ->
     foodName = msg.match[1]
 
     if foodName?.match(/(何|なん)でもいい/)
       categoryId = categoryMap[_.sample(Object.keys(categoryMap))]
       callRecipeServiceApi recipeEndpoint(categoryId), (results) ->
         recipe = _.sample(results)
-        msg.send recommendRecipe(foodName, "なら", recipe)
+        msg.reply recommendRecipe(foodName, "なら", recipe)
 
     else if categoryMap[foodName]?
       categoryId = categoryMap[foodName]
       callRecipeServiceApi recipeEndpoint(categoryId), (results) ->
         recipe = _.sample(results)
-        msg.send recommendRecipe(foodName, "だと", recipe)
+        msg.reply recommendRecipe(foodName, "だと", recipe)
     else
-      msg.send "#{foodName}だとわからないからもうちょっと詳しく教えて"
+      msg.reply 
+        type: "text"
+        contents: ["#{foodName}だとわからないからもうちょっと詳しく教えて"]
 
 createCategoryMap = ->
   callRecipeServiceApi categoryEndpoint, (results) ->
@@ -61,7 +63,5 @@ callRecipeServiceApi = (apiPath, callback) ->
     return callback(body.result)
 
 recommendRecipe = (foodName, phrase, recipe)->
-  """
-  #{foodName}#{phrase}、#{recipe.recipeTitle} とかはどう？
-  #{recipe.recipeUrl}
-  """
+    type: "text"
+    contents: ["#{foodName}#{phrase}、#{recipe.recipeTitle} とかはどう？\n#{recipe.recipeUrl}"]

@@ -13,7 +13,7 @@
     "hubot-google-translate": "*",
     "hubot-help": "*",
     "hubot-heroku-keepalive": "*",
-    "hubot-line": "*",
+    "line-message-api": "https://github.com/pyonk/hubot-line-message-api.git",
     "hubot-maps": "*",
     "hubot-pugme": "*",
     "hubot-redis-brain": "*",

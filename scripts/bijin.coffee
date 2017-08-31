@@ -23,7 +23,6 @@ module.exports = (robot) ->
         category = result[0].category
         thumb = result[0].thumb
         link = result[0].link
-        msg.send "お名前: #{category}\n" +
-        "link: #{link}\n" +
-        "#{thumb}\n"
-        msg.emote new LineImageAction link, link
+        msg.reply 
+          type: "text"
+          contents: ["お名前: #{category}\nlink: #{link}\n#{thumb}\n"]

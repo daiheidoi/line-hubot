@@ -14,40 +14,27 @@
 # Author:
 #   Matt McCormick
 
+bingAccountKey = process.env.HUBOT_BING_ACCOUNT_KEY
+unless bingAccountKey
+  throw "You must set HUBOT_BING_ACCOUNT_KEY in your environment vairables"
+
 module.exports = (robot) ->
-  robot.respond /news(?: me| on)?\s?(.*)/, (msg) ->
-    query msg, (response, err) ->
-      return msg.send err if err
+  robot.hear /^news (.*)/i, (msg) ->
+    newsMe msg, msg.match[1], (newses) ->
+      messages = ""
+      for message in newses
+        messages += "#{message.Title}\nlink: #{message.Url}\n\n"
+      msg.reply 
+        type: "text"
+        contents: ["#{messages}"]
 
-      strings = []
-      
-      topic = msg.match[1]
-      
-      if (topic != "")
-        strings.push "Here's the latest news on \"#{topic}\":\n"
-      else
-        strings.push "Here's the latest news headlines:\n"
-      
-      for story in response.responseData.results
-        strings.push story.titleNoFormatting.replace(/&#39;/g, "'").replace(/`/g, "'").replace(/&quot;/g, "\"")
-        strings.push story.unescapedUrl + "\n"
-
-      msg.send strings.join "\n"
-
-  query = (msg, cb) ->
-    if (msg.match[1] != "")
-      msg.http("https://ajax.googleapis.com/ajax/services/search/news?v=1.0&rsz=5")
-        .query(q: msg.match[1])
-        .get() (err, res, body) ->
-          complete cb, body, err
-    else
-      msg.http("https://ajax.googleapis.com/ajax/services/search/news?v=1.0&rsz=5&topic=h")
-        .get() (err, res, body) ->
-          complete cb, body, err
-
-  complete = (cb, body, err) ->
-    try
-      response = JSON.parse body
-    catch err
-      err = "Sorry, but I could not fetch the latest headlines."
-    cb(response, err)
+newsMe = (msg, query, cb) ->
+  msg.http('https://api.datamarket.azure.com/Bing/Search/v1/News')
+    .header("Authorization", "Basic " + new Buffer("#{bingAccountKey}:#{bingAccountKey}").toString('base64'))
+    .query(Query: "'" + query + "'", Market: "'" + "ja-JP" + "'", $format: "json", $top: 5)
+    .get() (err, res, body) ->
+      try
+        newses = JSON.parse(body).d.results
+        cb newses
+      catch error
+        cb body
